@@ -1,4 +1,4 @@
-import css from "../../App.css"
+import css from "./Layout.module.css"
 import clsx from "classnames"
 import { useSelector } from "react-redux"
 import { selectUserData, selectUserIsSignedIn } from "../../redux/auth/selectors"
