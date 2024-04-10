@@ -2,7 +2,7 @@ import css from "./Layout.module.css"
 import clsx from "classnames"
 import { useSelector } from "react-redux"
 import { selectUserData, selectUserIsSignedIn } from "../../redux/auth/selectors"
-import { NavLink } from "react-router-dom"
+import { NavLink, Outlet } from "react-router-dom"
 
 const getNavLinkClassNames = ({ isActive }) => {
     clsx(css.headerLink, {
@@ -10,7 +10,7 @@ const getNavLinkClassNames = ({ isActive }) => {
     })
 }
 
-const Layout = ({ children}) => {
+const Layout = () => {
     const isSignedIn = useSelector(selectUserIsSignedIn)
     const userData = useSelector(selectUserData)
 
@@ -34,7 +34,9 @@ const Layout = ({ children}) => {
                 )}
             </header>
 
-            <main>{children}</main>
+            <main>
+                <Outlet />
+            </main>
         </div>
     )
 }
