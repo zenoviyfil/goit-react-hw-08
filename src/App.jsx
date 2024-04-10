@@ -20,6 +20,8 @@ const RegisterPage = lazy(() => import("./pages/RegisterPage"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage"));
 const Loader = lazy(() => import("./components/Loader/Loader"))
 const Layout = lazy(() => import("./components/Layout/Layout"))
+const RestrictedRoute = lazy(() => import("./components/RestrictedRoute/RestrictedRoute"))
+const PrivateRoute = lazy(() => import("./components/PrivateRoute/PrivateRoute"))
 
 function App() {
 
@@ -40,10 +42,13 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<WelcomePage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/home" element=
+          {<PrivateRoute><HomePage /></PrivateRoute>} />
+          <Route path="/login" element=
+          {<RestrictedRoute><LoginPage /></RestrictedRoute>} />
+          <Route path="/register" element={<RestrictedRoute><RegisterPage /></RestrictedRoute>} />
+          <Route path="/contacts" element=
+          {<PrivateRoute><ContactsPage /></PrivateRoute>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>

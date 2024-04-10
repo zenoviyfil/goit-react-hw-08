@@ -1,8 +1,9 @@
 import css from "./Layout.module.css"
 import clsx from "classnames"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { selectUserData, selectUserIsSignedIn } from "../../redux/auth/selectors"
 import { NavLink, Outlet } from "react-router-dom"
+import { logOutUser } from "../../redux/auth/operations"
 
 const getNavLinkClassNames = ({ isActive }) => {
     clsx(css.headerLink, {
@@ -11,8 +12,12 @@ const getNavLinkClassNames = ({ isActive }) => {
 }
 
 const Layout = () => {
+    const dispatch = useDispatch()
     const isSignedIn = useSelector(selectUserIsSignedIn)
     const userData = useSelector(selectUserData)
+    const onLogout = () => {
+        dispatch(logOutUser())
+    }
 
     return (
         <div>
@@ -23,7 +28,7 @@ const Layout = () => {
                         <NavLink className={getNavLinkClassNames} to="/search">Search</NavLink>
                         <NavLink className={getNavLinkClassNames} to="/contacts">Contacts</NavLink>
                         <span>Hello, {userData.name}!</span>
-                        <button type="button">Logout</button>
+                        <button onClick={onLogout} type="button">Logout</button>
                     </>
                 ) : (
                     <>

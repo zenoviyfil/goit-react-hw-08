@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import { FaUser, FaPhone, FaPlus } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
-import { addContacts } from '../../redux/contactsOps'
+import { addContacts } from '../../redux/contacts/operations'
 
 const formSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Too short!').max(50, 'Too long!').required('Required!'),
