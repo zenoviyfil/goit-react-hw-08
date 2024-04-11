@@ -23,7 +23,7 @@ export const selectFilteredContacts = createSelector(
 );
 
 const contactsSlice = createSlice({
-  name: "phonebook",
+  name: "contacts",
   initialState: INITIAL_STATE,
 
   extraReducers: (builder) =>
