@@ -2,7 +2,7 @@ import css from "./Layout.module.css"
 import clsx from "classnames"
 import { useSelector, useDispatch } from "react-redux"
 import { selectUserData, selectUserIsSignedIn } from "../../redux/auth/selectors"
-import { NavLink, Outlet } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { logOutUser } from "../../redux/auth/operations"
 
 const getNavLinkClassNames = ({ isActive }) => {
@@ -11,13 +11,15 @@ const getNavLinkClassNames = ({ isActive }) => {
     })
 }
 
-const Layout = () => {
+const Layout = ({children}) => {
     const dispatch = useDispatch()
     const isSignedIn = useSelector(selectUserIsSignedIn)
     const userData = useSelector(selectUserData)
     const onLogout = () => {
         dispatch(logOutUser())
     }
+    console.log(userData)
+
 
     return (
         <div>
@@ -40,7 +42,7 @@ const Layout = () => {
             </header>
 
             <main>
-                <Outlet />
+                {children}
             </main>
         </div>
     )
