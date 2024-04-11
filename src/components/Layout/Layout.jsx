@@ -18,8 +18,6 @@ const Layout = ({children}) => {
     const onLogout = () => {
         dispatch(logOutUser())
     }
-    console.log(userData)
-
 
     return (
         <div>
@@ -27,7 +25,6 @@ const Layout = ({children}) => {
                 {isSignedIn ? (
                     <>
                         <NavLink className={getNavLinkClassNames} to="/home">Home</NavLink>
-                        <NavLink className={getNavLinkClassNames} to="/search">Search</NavLink>
                         <NavLink className={getNavLinkClassNames} to="/contacts">Contacts</NavLink>
                         <span>Hello, {userData.name}!</span>
                         <button onClick={onLogout} type="button">Logout</button>
@@ -40,10 +37,7 @@ const Layout = ({children}) => {
                     </>
                 )}
             </header>
-
-            <main>
                 {children}
-            </main>
         </div>
     )
 }

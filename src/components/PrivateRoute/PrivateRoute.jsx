@@ -7,7 +7,7 @@ const PrivateRoute = ({children}) => {
     const isRefreshing = useSelector(selectUserIsRefreshing)
 
   return (
-    !isSignedIn && !isRefreshing ? (<Navigate to="/login" replace />) : ({children})
+    !isSignedIn && !isRefreshing ? (<Navigate to="/login" replace />) : (children)
   )
 }
 

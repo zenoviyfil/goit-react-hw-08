@@ -1,8 +1,7 @@
 import { useDispatch } from "react-redux"
 import { registerUser } from "../redux/auth/operations"
-import { lazy } from "react"
 
-const RegisterForm = lazy(() => import("../components/RegisterForm/RegisterForm"))
+import RegisterForm from "../components/RegisterForm/RegisterForm"
 
 const RegisterPage = () => {
   const dispatch = useDispatch()
