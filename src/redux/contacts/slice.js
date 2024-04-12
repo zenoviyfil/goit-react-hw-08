@@ -1,26 +1,12 @@
-import { createSlice, isAnyOf, createSelector } from "@reduxjs/toolkit"
+import { createSlice, isAnyOf } from "@reduxjs/toolkit"
 import { fetchContacts, addContacts, deleteContacts } from "./operations"
-import { selectUserContacts } from "../contacts/selectors"
-import { selectNameFilter } from "../filters/selectors";
+import { logOutUser } from "../auth/operations";
 
 const INITIAL_STATE = {
   contacts: null,
   isLoading: false,
   isError: false,
 };
-
-export const selectFilteredContacts = createSelector(
-  [selectUserContacts, selectNameFilter],
-  (contacts, filter) => {
-    if (filter.length > 0) {
-      return contacts.filter((contact) =>
-        contact.name.toLowerCase().includes(filter.toLowerCase().trim())
-      );
-    } else {
-      return contacts;
-    }
-  }
-);
 
 const contactsSlice = createSlice({
   name: "contacts",
@@ -42,12 +28,18 @@ const contactsSlice = createSlice({
           (contact) => contact.id !== action.payload.id
         );
       })
+      .addCase(logOutUser.fulfilled, (state) => {
+        state.contacts = null;
+        state.isError = false;
+        state.isLoading = false;
+      })
 
       .addMatcher(
         isAnyOf(
           fetchContacts.pending,
           addContacts.pending,
-          deleteContacts.pending
+          deleteContacts.pending,
+          logOutUser.pending
         ),
         (state) => {
           state.isLoading = true;
@@ -58,7 +50,8 @@ const contactsSlice = createSlice({
         isAnyOf(
           fetchContacts.rejected,
           addContacts.rejected,
-          deleteContacts.rejected
+          deleteContacts.rejected,
+          logOutUser.rejected
         ),
         (state) => {
           state.isLoading = false;

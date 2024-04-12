@@ -15,18 +15,19 @@ const Navigation = () => {
 
   return (
     <div>
-        <NavLink to="/">
-            Welcome
-        </NavLink>
-        {isLoggedIn && (
-            <>
-                <NavLink className={getNavLinkClassNames} to="/home">
-                    Home
-                </NavLink>
-                <NavLink className={getNavLinkClassNames} to="/contacts">
-                    Contacts
-                </NavLink>
-            </>
+        {isLoggedIn ? (
+        <>
+            <NavLink className={getNavLinkClassNames} to="/home">
+                Home
+            </NavLink>
+            <NavLink className={getNavLinkClassNames} to="/contacts">
+                Contacts
+            </NavLink>
+        </>
+        ) : (
+            <NavLink to="/">
+                Welcome
+            </NavLink>
         )}
     </div>
   )
