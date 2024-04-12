@@ -4,12 +4,13 @@ import ContactForm from "../components/ContactForm/ContactForm"
 import Loader from "../components/Loader/Loader"
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage"
 import {useSelector, useDispatch} from "react-redux"
-import { selectContactsIsError, selectContactsIsLoading } from "../redux/contacts/selectors"
+import { selectContactsIsError, selectContactsIsLoading, selectUserContacts } from "../redux/contacts/selectors"
 import { useEffect } from "react"
 import { addContacts, fetchContacts } from "../redux/contacts/operations"
 
 const ContactsPage = () => {
   const dispatch = useDispatch()
+  const contacts = useSelector(selectUserContacts)
   const isLoading = useSelector(selectContactsIsLoading)
   const isError = useSelector(selectContactsIsError)
 
@@ -27,7 +28,7 @@ const ContactsPage = () => {
       <SearchBox />
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
-      <ContactList />
+      {contacts && <ContactList />}
     </div>
   )
 }
