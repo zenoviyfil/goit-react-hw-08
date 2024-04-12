@@ -4,7 +4,7 @@ import { Suspense, lazy, useEffect } from 'react'
 // import { fetchContacts } from './redux/contactsOps'
 import { refreshUser } from './redux/auth/operations'
 import { Navigate, Route, Routes } from "react-router-dom"
-import { selectUserIsError, selectUserIsLoading } from './redux/auth/selectors'
+import { selectUserIsError, selectUserIsLoading, selectUserIsRefreshing } from './redux/auth/selectors'
 
 
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
@@ -21,6 +21,7 @@ const Layout = lazy(() => import("./components/Layout/Layout"))
 function App() {
 
   const dispatch = useDispatch()
+  const isRefreshing = useSelector(selectUserIsRefreshing)
   const isLoading = useSelector(selectUserIsLoading)
   const isError = useSelector(selectUserIsError)
 
@@ -33,7 +34,8 @@ function App() {
   }, [dispatch])
 
   return (
-    <Suspense fallback={isLoading && !isError && <Loader />}>
+    isRefreshing ? (<b>Refreshing user ...</b>) : (
+      <Suspense fallback={isLoading && !isError && <Loader />}>
       <Layout>
         <Routes>
           <Route path="/" element={<WelcomePage />} />
@@ -47,6 +49,7 @@ function App() {
         </Routes>
       </Layout>
     </Suspense>
+    )
   )
 }
 
