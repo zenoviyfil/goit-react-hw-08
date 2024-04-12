@@ -61,6 +61,8 @@ const authSlice = createSlice({
         state.isError = false;
       })
       .addCase(logOutUser.fulfilled, (state) => {
+        // return INIT_STATE;
+        state.token = null;
         state.isLoading = false;
         state.isSignedIn = false;
       })
