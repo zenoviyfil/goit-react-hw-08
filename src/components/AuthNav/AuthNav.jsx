@@ -1,18 +1,15 @@
 import css from "./AuthNav.module.css"
-import clsx from "classnames"
 import { NavLink } from "react-router-dom"
-
-const getNavLinkClassNames = ({ isActive }) => {
-    clsx(css.headerLink, {
-        [css.active]: isActive
-    })
-}
 
 const AuthNav = () => {
   return (
-    <div>
-        <NavLink className={getNavLinkClassNames} to="/login">Log in</NavLink>
-        <NavLink className={getNavLinkClassNames} to="/register">Register</NavLink>
+    <div className={css.authNav}>
+        <NavLink className={`${css.btn} ${css.btnEffect}`} to="/login"><svg>
+        <rect x="0" y="0" fill="none" width="100%" height="100%"/>
+        </svg>Log in</NavLink>
+        <NavLink className={`${css.btn} ${css.btnEffect}`} to="/register"><svg>
+        <rect x="0" y="0" fill="none" width="100%" height="100%"/>
+        </svg>Register</NavLink>
     </div>
   )
 }

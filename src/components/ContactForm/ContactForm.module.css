@@ -2,19 +2,20 @@
     width: 300px;
     display: flex;
     flex-direction: column;
-    border: 1px solid white;
     border-radius: 5px;
     padding: 20px 10px;
 }
 
 .inputLabelUser {
     display: flex;
+    height: 40px;
     margin-top: 10px;
     padding: 10px 0;
 }
 
 .inputLabelNumber {
     display: flex;
+    height: 40px;
     margin-top: 10px;
     padding: 10px 0;
 }
@@ -50,4 +51,6 @@
     align-items: center;
     padding: 10px 0;
     cursor: pointer;
+    border-radius: 10px;
+    border: none;
 }

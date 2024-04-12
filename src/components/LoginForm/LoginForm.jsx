@@ -30,8 +30,6 @@ const LoginForm = ({ onLogin }) => {
             onSubmit={handleSubmit}
         >
             <Form className={css.form}>
-                <h2 className={css.formTitle}>Login</h2>
-
                 <label className={css.label}>
                     <span className={css.labelText}>Email:</span>
                     <Field
@@ -61,9 +59,8 @@ const LoginForm = ({ onLogin }) => {
                     />
                 </label>
 
-
                 <button
-                    className={css.submitBtn}
+                    className={css.glowOnHover}
                     type="submit"
                     title="Click to register user"
                     aria-label="Add new mailbox"

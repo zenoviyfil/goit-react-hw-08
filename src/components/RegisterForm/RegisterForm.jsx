@@ -35,8 +35,6 @@ const RegisterForm = ({ onRegister }) => {
             onSubmit={handleSubmit}
         >
             <Form className={css.form}>
-                <h2 className={css.formTitle}>Register</h2>
-
                 <label className={css.label}>
                     <span className={css.labelText}>User name:</span>
                     <Field
@@ -82,12 +80,12 @@ const RegisterForm = ({ onRegister }) => {
 
 
                 <button
-                    className={css.submitBtn}
+                    className={css.glowOnHover}
                     type="submit"
                     title="Click to register user"
                     aria-label="Add new mailbox"
                 >
-                    Sign Up
+                    Register
                 </button>
             </Form>
         </Formik>

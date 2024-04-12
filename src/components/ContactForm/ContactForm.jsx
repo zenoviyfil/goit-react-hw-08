@@ -1,7 +1,7 @@
 import css from './ContactForm.module.css'
 import * as Yup from 'yup';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
-import { FaUser, FaPhone, FaPlus } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { addContacts } from '../../redux/contacts/operations'
 
@@ -31,7 +31,7 @@ const ContactForm = () => {
     onSubmit={handleSubmit}
     >
     <Form className={css.form}>
-      <label className={css.inputLabelUser}><FaUser className={css.labelIcon}/>
+      <label className={css.inputLabelUser}>
         <Field className={css.formName} type="text" name='name' placeholder='George Washington'/>
         <ErrorMessage 
         className={css.errorMsg}
@@ -39,7 +39,7 @@ const ContactForm = () => {
         component='span'
         />
       </label>
-      <label className={css.inputLabelNumber}><FaPhone className={css.labelIcon}/>
+      <label className={css.inputLabelNumber}>
         <Field className={css.formNumb} type='tel' name='number' placeholder='+380994687989'/>
         <ErrorMessage 
         className={css.errorMsg}

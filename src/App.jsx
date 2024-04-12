@@ -1,7 +1,6 @@
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { Suspense, lazy, useEffect } from 'react'
-// import { fetchContacts } from './redux/contactsOps'
 import { refreshUser } from './redux/auth/operations'
 import { Navigate, Route, Routes } from "react-router-dom"
 import { selectUserIsError, selectUserIsLoading, selectUserIsRefreshing } from './redux/auth/selectors'
@@ -24,10 +23,6 @@ function App() {
   const isRefreshing = useSelector(selectUserIsRefreshing)
   const isLoading = useSelector(selectUserIsLoading)
   const isError = useSelector(selectUserIsError)
-
-  // useEffect(() => {
-  //   dispatch(fetchContacts())
-  // }, [dispatch])
 
   useEffect(() => {
     dispatch(refreshUser())

@@ -1,14 +1,7 @@
 import css from "./Navigation.module.css"
-import clsx from "classnames"
 import { NavLink } from "react-router-dom"
 import { selectUserIsSignedIn } from "../../redux/auth/selectors"
 import { useSelector } from "react-redux"
-
-const getNavLinkClassNames = ({ isActive }) => {
-    clsx(css.headerLink, {
-        [css.active]: isActive
-    })
-}
 
 const Navigation = () => {
     const isLoggedIn = useSelector(selectUserIsSignedIn)
@@ -16,16 +9,22 @@ const Navigation = () => {
   return (
     <div>
         {isLoggedIn ? (
-        <>
-            <NavLink className={getNavLinkClassNames} to="/home">
-                Home
+        <div className={css.nav}>
+            <NavLink className={`${css.btn} ${css.btnEffect}`} to="/home">
+            <svg>
+            <rect x="0" y="0" fill="none" width="100%" height="100%"/>
+            </svg>
+            Home
             </NavLink>
-            <NavLink className={getNavLinkClassNames} to="/contacts">
-                Contacts
+            <NavLink className={`${css.btn} ${css.btnEffect}`} to="/contacts">
+            <svg>
+            <rect x="0" y="0" fill="none" width="100%" height="100%"/>
+            </svg>
+            Contacts
             </NavLink>
-        </>
+        </div>
         ) : (
-            <NavLink to="/">
+            <NavLink className={css.welcomeLink} to="/">
                 Welcome
             </NavLink>
         )}

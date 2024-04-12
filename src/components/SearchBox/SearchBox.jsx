@@ -12,7 +12,7 @@ return (
   <div className={css.searchBox}>
     <label className={css.inputField}>
     <FaBook className={css.searchBoxIcon}/>
-    <p className={css.boxHeader}>Find contacts by name</p>
+    <p className={css.boxHeader}>Find contact by name</p>
     </label>
       <input className={css.boxInput} type="text" value={filter} onChange={(e) => dispatch(changeFilter(e.target.value))} placeholder=' Who are you looking for?'/>
   </div>

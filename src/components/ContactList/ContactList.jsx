@@ -11,6 +11,7 @@ const ContactList = () => {
 
   return (
     <ul className={css.contactsList}>
+      <p className={css.contactsHeader}>Contacts:</p>
       {searchContact !== null && searchContact.map((contact) => (
         <li key={contact.id}>
           <Contact data={contact} />

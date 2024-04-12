@@ -26,9 +26,9 @@ const ContactsPage = () => {
     <div>
       <ContactForm onAddContact={handleAddContact} />
       <SearchBox />
+      {contacts && <ContactList />}
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
-      {contacts && <ContactList />}
     </div>
   )
 }
