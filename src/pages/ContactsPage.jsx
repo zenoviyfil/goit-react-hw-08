@@ -14,7 +14,7 @@ const ContactsPage = () => {
   const isError = useSelector(selectContactsIsError)
 
   useEffect(() => {
-    dispatch(fetchContacts)
+    dispatch(fetchContacts())
   }, [dispatch])
 
   const handleAddContact = (formData) => {
