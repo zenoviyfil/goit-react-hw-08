@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { registerUser } from "../redux/auth/operations"
 
-import RegisterForm from "../components/RegisterForm/RegisterForm"
+import RegistrationForm from "../components/RegistrationForm/RegistrationForm"
 
 const RegisterPage = () => {
   const dispatch = useDispatch()
@@ -12,7 +12,7 @@ const RegisterPage = () => {
 
   return (
     <div>
-      <RegisterForm onRegister={onRegister} />
+      <RegistrationForm onRegister={onRegister} />
     </div>
   )
 }

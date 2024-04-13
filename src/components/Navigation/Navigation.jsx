@@ -1,14 +1,17 @@
 import css from "./Navigation.module.css"
 import { NavLink } from "react-router-dom"
-import { selectUserIsSignedIn } from "../../redux/auth/selectors"
+import { selectIsLoggedIn } from "../../redux/auth/selectors"
 import { useSelector } from "react-redux"
 
 const Navigation = () => {
-    const isLoggedIn = useSelector(selectUserIsSignedIn)
+    const isLoggedIn = useSelector(selectIsLoggedIn)
 
   return (
     <div>
-        {isLoggedIn ? (
+            <NavLink className={css.welcomeLink} to="/">
+                Welcome
+            </NavLink>
+        {isLoggedIn &&
         <div className={css.nav}>
             <NavLink className={`${css.btn} ${css.btnEffect}`} to="/home">
             <svg>
@@ -23,11 +26,7 @@ const Navigation = () => {
             Contacts
             </NavLink>
         </div>
-        ) : (
-            <NavLink className={css.welcomeLink} to="/">
-                Welcome
-            </NavLink>
-        )}
+        }
     </div>
   )
 }
