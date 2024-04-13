@@ -4,7 +4,7 @@ import { logOutUser, loginUser, refreshUser, registerUser } from "./operations";
 const INIT_STATE = {
     userData: null,
     token: null,
-    isSignedIn: false,
+    isLoggedIn: false,
     isRefreshing: false,
     isLoading: false,
     isError: false
@@ -19,13 +19,13 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.userData = action.payload.user;
         state.token = action.payload.token;
-        state.isSignedIn = true;
+        state.isLoggedIn = true;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.userData = action.payload.user;
         state.token = action.payload.token;
-        state.isSignedIn = true;
+        state.isLoggedIn = true;
       })
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
@@ -34,7 +34,7 @@ const authSlice = createSlice({
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.isRefreshing = false;
         state.userData = action.payload;
-        state.isSignedIn = true;
+        state.isLoggedIn = true;
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
@@ -43,7 +43,7 @@ const authSlice = createSlice({
       .addCase(logOutUser.fulfilled, (state) => {
         state.token = null;
         state.isLoading = false;
-        state.isSignedIn = false;
+        state.isLoggedIn = false;
       })
 
       .addMatcher(
